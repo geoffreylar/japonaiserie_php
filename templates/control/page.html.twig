@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}la page{% endblock %}
+
+{% block body %}
+ 
+  <div>
+    <h1>La Japonaiserie vous présente ces produits</h1>
+    <div class="row flex">
+      {% for produit in properties %}
+     
+      <div class="card">
+        <div class="card-header">
+            <h5>
+              <a href="{{ path('control.show', {id:produit.id, slug: produit.slug}) }}" >
+                {{produit.Titre}} </a>
+            </h5>
+        </div>
+        <div class="card-body">
+          <p>
+              {{produit.description}} 
+          </p>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}
