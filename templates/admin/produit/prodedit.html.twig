@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition de bien{% endblock %}
+
+{% block body %}
+
+<div>
+        <h2>Edition des biens</h2>
+
+        {{ include( 'admin/produit/form_edit.html.twig', {form: form, button: 'Editer'}) }}
+        
+</div>
+
+{% endblock %}

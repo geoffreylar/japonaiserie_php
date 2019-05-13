@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création des biens{% endblock %}
+
+{% block body %}
+
+{{ include( 'admin/produit/form_edit.html.twig', {form: form, button: 'Créer'}) }}
+
+{% endblock %}

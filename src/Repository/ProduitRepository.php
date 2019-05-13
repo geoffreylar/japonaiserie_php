@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Produit;
+use App\Controller\Admin\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
