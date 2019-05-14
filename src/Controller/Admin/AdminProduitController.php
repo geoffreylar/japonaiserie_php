@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminProduitController extends AbstractController
 {
     /**
-     * @var ProduitRepository
+     * @var ProduitRepository 
      */
     private $repository;
 
