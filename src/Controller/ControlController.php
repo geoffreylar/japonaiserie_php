@@ -8,6 +8,8 @@ use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ControlController extends AbstractController
 {
@@ -25,15 +27,18 @@ class ControlController extends AbstractController
      * @Route("/control", name="control.action")
      * @return Response
      */
-    public function action(): Response{
+    public function action(PaginatorInterface $paginator, Request $request): Response
     {
+        //$properties = $this->repository-> findAll(); 
 
-        $properties = $this->repository-> findAll(); 
-
+        $produits = $paginator->paginate(
+            $this->repository->findAllVisibleQuery(),
+            $request->query->getInt('page', 1), 5
+        ); 
         return $this->render('control/page.html.twig'
-            , ['properties' => $properties ]);
+            , ['produits' => $produits ]);
     }
-    }
+    
 
 
     /**
@@ -51,7 +56,7 @@ class ControlController extends AbstractController
             }
     
             return $this->render('control/show.html.twig'
-                , ['properties' => $produit ]);
+                , ['produits' => $produit ]);
         }
     }
 }

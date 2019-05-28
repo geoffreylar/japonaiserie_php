@@ -6,6 +6,9 @@ use App\Entity\Produit;
 use App\Controller\Admin\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Produit|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +21,21 @@ class ProduitRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Produit::class);
+    }
+ 
+    /**
+    * @return Query
+    */
+    public function findAllVisibleQuery() : Query
+    {
+        return $this->findVisibleQuery()
+            ->getQuery();
+    }
+
+
+    public function findVisibleQuery() : QueryBuilder
+    {
+        return $this->createQueryBuilder('p');
     }
 
     // /**
@@ -48,4 +66,6 @@ class ProduitRepository extends ServiceEntityRepository
         ;
     }
     */
+
+   
 }
