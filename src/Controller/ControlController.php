@@ -46,7 +46,7 @@ class ControlController extends AbstractController
      * @param Property $property, string $slug
      * @return Response
      */
-    public function show(Produit $produit, string $slug): Response{
+    public function show(Produit $produit, string $slug): Response
         {
             if ($produit->getSlug() !== $slug){
                 return $this->redirectToRoute('control.show.html.twig', [
@@ -58,5 +58,5 @@ class ControlController extends AbstractController
             return $this->render('control/show.html.twig'
                 , ['produits' => $produit ]);
         }
-    }
+    
 }
