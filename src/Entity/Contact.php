@@ -31,6 +31,13 @@ class Contact
     /**
      * @var string|null
      * @Assert\NotBlank()
+     * @Assert\Length(min = 1, max = 150)
+     */
+    private $objet;
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
      * @Assert\Length(min = 1, max = 1000)
      */
     private $message;
@@ -131,6 +138,30 @@ class Contact
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of objet
+     *
+     * @return  string|null
+     */ 
+    public function getObjet()
+    {
+        return $this->objet;
+    }
+
+    /**
+     * Set the value of objet
+     *
+     * @param  string|null  $objet
+     *
+     * @return  self
+     */ 
+    public function setObjet($objet)
+    {
+        $this->objet = $objet;
 
         return $this;
     }
